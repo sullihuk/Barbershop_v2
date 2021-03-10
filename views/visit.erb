@@ -1,0 +1,30 @@
+<h2> Записаться </h2>
+
+<%= @soobshalovo%>
+
+<form action="/visit" method="POST">
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Ваше имя</label>
+    <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="напишите ваше имя">
+    </div>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Ваш телефон</label>
+    <input name="phone" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="напишите ваш телефон">
+    </div>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Когда Вас ждать</label>
+    <input name="date" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="напишите время вашего визита">
+    </div>
+    <select class="form-select" name="barber" aria-label="Default select example">
+  <option selected>Выберите парикмахера</option>
+  <option value="Walter White">Walter White</option>
+  <option value="Gustavo Fring">Gustavo Fring</option>
+  <option value="Michael Ehrmantrauth">Michael Ehrmantrauth</option>
+</select> </div> <div> </div> 
+
+
+  
+  
+  <button type="submit" class="btn btn-primary">Записаться</button>
+</form>
