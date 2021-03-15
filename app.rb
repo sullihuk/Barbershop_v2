@@ -7,6 +7,7 @@ get '/' do
 end
 
 get '/about' do
+	@error = 'something wrong!'
 	erb :about 
 end
 
@@ -23,13 +24,22 @@ post '/visit' do
 	phone = params[:phone]
 	date = params[:date]
 	barber = params[:barber]
-	@soobshalovo = "Dear #{username}, yours phone is #{phone}, you arive at #{date} yours barber is #{barber}."
-	 
-	fial = File.open './public/users.txt', 'a'
-	fial.write "Dear #{username}, yours phone is #{phone}, you arive at #{date}, yours barber is #{barber}</br>"
-	fial.write "\n"
+	color = params[:color]
+		
+
+	hh = {:username => "Введите имя",
+		:phone => 'Введите телефон',
+		:date => 'Заполните поле "Когда вас ждать"'#,
+		#:colour => 'Выберите цвет'
+		}
+
+	@error3 = hh.select {|key,_| params[key] == ""}.values.join(", ")
+
+	if @error3 =! ''
 	
-	erb :visit
+		return erb :visit
+	end
+		
 end
 
 get '/admin' do

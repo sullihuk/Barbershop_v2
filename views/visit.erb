@@ -2,29 +2,56 @@
 
 <%= @soobshalovo%>
 
+
 <form action="/visit" method="POST">
 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Ваше имя</label>
-    <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="напишите ваше имя">
+    <input name="username" type="text" class="form-control ccc" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="напишите ваше имя">
     </div>
     <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Ваш телефон</label>
-    <input name="phone" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="напишите ваш телефон">
+    <input name="phone" type="text" class="form-control" id="bbb" aria-describedby="emailHelp" placeholder="напишите ваш телефон">
     </div>
     <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Когда Вас ждать</label>
-    <input name="date" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="напишите время вашего визита">
+    <input name="date" type="text" class="form-control" id="aaa" aria-describedby="emailHelp" placeholder="напишите время вашего визита">
     </div>
-    <select class="form-select" name="barber" aria-label="Default select example">
+    <select class="form-select ccc" name="barber" aria-label="Default select example">
   <option selected>Выберите парикмахера</option>
   <option value="Walter White">Walter White</option>
   <option value="Gustavo Fring">Gustavo Fring</option>
   <option value="Michael Ehrmantrauth">Michael Ehrmantrauth</option>
 </select> </div> <div> </div> 
+<div class="mb-3">
+    <label  class="form-label">Выберите цвет краски</label>
+    <select id="color" name="color">
+  <option value="#7bd148">Green</option>
+  <option value="#5484ed">Bold blue</option>
+  <option value="#a4bdfc">Blue</option>
+  <option value="#46d6db">Turquoise</option>
+  <option value="#7ae7bf">Light green</option>
+  <option value="#51b749">Bold green</option>
+  <option value="#fbd75b">Yellow</option>
+  <option value="#ffb878">Orange</option>
+  <option value="#ff887c">Red</option>
+  <option value="#dc2127">Bold red</option>
+  <option value="#dbadff">Purple</option>
+  <option value="#e1e1e1">Gray</option>
+</select>
+   
+    </div>
 
 
+  <div>
   
-  
-  <button type="submit" class="btn btn-primary">Записаться</button>
+  <button type="submit" class="btn btn-primary">Записаться</button></div>
 </form>
+<script type="text/javascript">
+$(function(){
+
+  $('#color').simplecolorpicker();
+
+});
+
+</script>
