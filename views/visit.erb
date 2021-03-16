@@ -7,21 +7,21 @@
 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Ваше имя</label>
-    <input name="username" type="text" class="form-control ccc" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="напишите ваше имя">
+    <input name="username" type="text" class="form-control ccc" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="напишите ваше имя" value="<%=@username%>" >
     </div>
     <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Ваш телефон</label>
-    <input name="phone" type="text" class="form-control" id="bbb" aria-describedby="emailHelp"  placeholder="напишите ваш телефон">
+    <input name="phone" type="text" class="form-control" id="bbb" aria-describedby="emailHelp"  placeholder="напишите ваш телефон" <%=@phone%> >
     </div>
     <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label" >Когда Вас ждать</label>
-    <input name="date" type="text" class="form-control" id="aaa" aria-describedby="emailHelp"  placeholder="напишите время вашего визита">
+    <input name="date" type="text" class="form-control" id="aaa" aria-describedby="emailHelp"  placeholder="напишите время вашего визита" value="<%=@date%>">
     </div>
-    <select class="form-select ccc" name="barber" aria-label="Default select example" value = "barber">
+    <select class="form-select ccc" name="barber" aria-label="Default select example" value = "barber" >
   <option selected>Выберите парикмахера</option>
-  <option value="Walter White">Walter White</option>
-  <option value="Gustavo Fring">Gustavo Fring</option>
-  <option value="Michael Ehrmantrauth">Michael Ehrmantrauth</option>
+  <option <%= @barber == "Walter White" ? 'selected' : "Выберите парикмахера"%>>Walter White</option>
+  <option <%= @barber == "Gustavo Fring" ? 'selected' : "Выберите парикмахера"%>>Gustavo Fring</option>
+  <option <%= @barber == "Michael Ehrmantrauth" ? 'selected' : "Выберите парикмахера"%>>Michael Ehrmantrauth</option>
 </select> 
 <div class="mb-3">
     <label  class="form-label">Выберите цвет краски</label>
