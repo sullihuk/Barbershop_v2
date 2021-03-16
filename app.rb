@@ -1,22 +1,32 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/contrib'
+require 'sqlite3'
+
+
 
 def check 
-	hh = {:username => "Введите имя",
-		:phone => 'Введите телефон',
-		:date => 'Заполните поле "Когда вас ждать"'
-		#:colour => 'Выберите цвет'
-		}
 
-	@error3 = hh.select {|key,_| params[key] == ""}.values.join(", ")
+	@db = SQLite3::Database.new './public/bsh.db'
 
-	if @error3 != ''
-	
-		return erb :visit
-	else
-		@notice = "Dear #{@username} we will pend you at #{@date}, #{@phone}, #{@barber} #{@color}"
-	end
+			hh = {:username => "Введите имя",
+				:phone => 'Введите телефон',
+				:date => 'Заполните поле "Когда вас ждать"'
+				#:colour => 'Выберите цвет'
+				}
+
+			@error3 = hh.select {|key,_| params[key] == ""}.values.join(", ")
+
+			if @error3 != ''
+			
+				return erb :visit
+			else
+				@notice = "Dear #{@username} we will pend you at #{@date}, #{@phone}, #{@barber} #{@color}"
+				@db.execute "INSERT INTO CUSTOMERS (NAME, PHONE, BARBER, DATESTAMP, COLOR) VALUES  ('#{@username}', '#{@phone}', '#{@date}', '#{@barber}', '#{@color}')"
+			end
+
+	@db.close
+
 end
 
 get '/' do
@@ -36,6 +46,11 @@ get '/contacts' do
 	erb :contacts
 end
 
+post '/contacts' do
+	@email = params[:email]
+	@message = params[:message]
+end
+
 post '/visit' do
 	@username = params[:username]
 	@phone = params[:phone]
@@ -47,8 +62,6 @@ post '/visit' do
 	check
 
 	erb :visit
-
-	
 		
 end
 
