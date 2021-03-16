@@ -1,6 +1,6 @@
 <h2> Записаться </h2>
 
-<%= @soobshalovo%>
+<%= @notice%>
 
 
 <form action="/visit" method="POST">
@@ -11,18 +11,18 @@
     </div>
     <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Ваш телефон</label>
-    <input name="phone" type="text" class="form-control" id="bbb" aria-describedby="emailHelp" placeholder="напишите ваш телефон">
+    <input name="phone" type="text" class="form-control" id="bbb" aria-describedby="emailHelp"  placeholder="напишите ваш телефон">
     </div>
     <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Когда Вас ждать</label>
-    <input name="date" type="text" class="form-control" id="aaa" aria-describedby="emailHelp" placeholder="напишите время вашего визита">
+    <label for="exampleInputEmail1" class="form-label" >Когда Вас ждать</label>
+    <input name="date" type="text" class="form-control" id="aaa" aria-describedby="emailHelp"  placeholder="напишите время вашего визита">
     </div>
-    <select class="form-select ccc" name="barber" aria-label="Default select example">
+    <select class="form-select ccc" name="barber" aria-label="Default select example" value = "barber">
   <option selected>Выберите парикмахера</option>
   <option value="Walter White">Walter White</option>
   <option value="Gustavo Fring">Gustavo Fring</option>
   <option value="Michael Ehrmantrauth">Michael Ehrmantrauth</option>
-</select> </div> <div> </div> 
+</select> 
 <div class="mb-3">
     <label  class="form-label">Выберите цвет краски</label>
     <select id="color" name="color">
@@ -40,10 +40,10 @@
   <option value="#e1e1e1">Gray</option>
 </select>
    
-    </div>
+   
 
 
-  <div>
+  
   
   <button type="submit" class="btn btn-primary">Записаться</button></div>
 </form>

@@ -2,8 +2,25 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/contrib'
 
+def check 
+	hh = {:username => "Введите имя",
+		:phone => 'Введите телефон',
+		:date => 'Заполните поле "Когда вас ждать"'
+		#:colour => 'Выберите цвет'
+		}
+
+	@error3 = hh.select {|key,_| params[key] == ""}.values.join(", ")
+
+	if @error3 != ''
+	
+		return erb :visit
+	else
+		@notice = "Dear #{@username} we will pend you at #{@date}, #{@phone}, #{@barber} #{@color}"
+	end
+end
+
 get '/' do
-	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href =\"http://rubyschool.us/\">Ruby school</a>!!!"
+	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href =\"http://rubyschool.us/\">Ruby school</a>"
 end
 
 get '/about' do
@@ -20,30 +37,22 @@ get '/contacts' do
 end
 
 post '/visit' do
-	username = params[:username]
-	phone = params[:phone]
-	date = params[:date]
-	barber = params[:barber]
-	color = params[:color]
-		
-
-	hh = {:username => "Введите имя",
-		:phone => 'Введите телефон',
-		:date => 'Заполните поле "Когда вас ждать"'#,
-		#:colour => 'Выберите цвет'
-		}
-
-	@error3 = hh.select {|key,_| params[key] == ""}.values.join(", ")
-
-	if @error3 =! ''
+	@username = params[:username]
+	@phone = params[:phone]
+	@date = params[:date]
+	@barber = params[:barber]
+	@color = params[:color]
 	
-		return erb :visit
-	end
+
+	check
+
+	erb :visit
+
+	
 		
 end
 
 get '/admin' do
-	erb "tunn"
 	erb :admin
 end
 
