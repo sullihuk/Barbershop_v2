@@ -22,7 +22,7 @@ def check
 				return erb :visit
 			else
 				@notice = "Dear #{@username} we will pend you at #{@date}, #{@phone}, #{@barber} #{@color}"
-				@db.execute "INSERT INTO CUSTOMERS (NAME, PHONE, BARBER, DATESTAMP, COLOR) VALUES  ('#{@username}', '#{@phone}', '#{@date}', '#{@barber}', '#{@color}')"
+				@db.execute "INSERT INTO CUSTOMERS (NAME, PHONE, BARBER, DATESTAMP, COLOR) VALUES (?,?,?,?,?)", [@username, @phone, @date, @barber, @color]
 			end
 
 	@db.close
