@@ -1,2 +1,27 @@
 
 public/bsh.db
+package-lock.json
+public/.travis.yml
+public/bower.json
+public/datetimepicker.jquery.json
+public/doc.tpl
+public/index.html
+public/karma.conf.js
+public/screen/1.png
+public/screen/3.1.png
+public/screen/4.png
+public/package.json
+public/screen/2.png
+public/screen/3.png
+public/screen/5.png
+public/screen/6.png
+public/tests/app.css
+public/tests/index.html
+public/tests/input_in_container_fixed_to_bottom_of_viewport.html
+public/tests/input_in_container_fixed_to_top_of_viewport.html
+public/tests/tests/bootstrap.js
+public/tests/tests/destroy.js
+public/tests/tests/events.js
+public/tests/tests/init.js
+public/tests/tests/methods.js
+public/tests/tests/options.js

@@ -11,13 +11,13 @@
     </div>
     <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Ваш телефон</label>
-    <input name="phone" type="text" class="form-control" id="bbb" aria-describedby="emailHelp"  placeholder="напишите ваш телефон" <%=@phone%> >
+    <input name="phone" type="text" class="form-control" id="bbb" aria-describedby="emailHelp"  placeholder="напишите ваш телефон" value="<%=@phone%>" >
     </div>
     <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label" >Когда Вас ждать</label>
-    <input name="date" type="text" class="form-control" id="aaa" aria-describedby="emailHelp"  placeholder="напишите время вашего визита" value="<%=@date%>">
+    <input id="aaa" name ='date' type="text" class="form-control"  >
     </div>
-    <select class="form-select ccc" name="barber" aria-label="Default select example" value = "barber" >
+    <select class="form-select ccc" name="barber" aria-label="Default select example" value = "<%=@barber%>" >
   <option selected>Выберите парикмахера</option>
   <option <%= @barber == "Walter White" ? 'selected' : "Выберите парикмахера"%>>Walter White</option>
   <option <%= @barber == "Gustavo Fring" ? 'selected' : "Выберите парикмахера"%>>Gustavo Fring</option>
@@ -49,9 +49,12 @@
 </form>
 <script type="text/javascript">
 $(function(){
-
+  
   $('#color').simplecolorpicker();
 
+  $('#aaa').datetimepicker();
+
 });
+
 
 </script>
