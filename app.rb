@@ -22,7 +22,7 @@ def check
 				return erb :visit
 			else
 				@notice = "Dear #{@username} we will pend you at #{@date}, #{@phone}, #{@barber} #{@color}"
-				@db.execute "INSERT INTO CUSTOMERS (NAME, PHONE, BARBER, DATESTAMP, COLOR) VALUES (?,?,?,?,?)", [@username, @phone, @date, @barber, @color]
+				@db.execute "INSERT INTO CUSTOMERS (NAME, PHONE, BARBER, DATESTAMP, COLOR) VALUES (?,?,?,?,?)", [@username, @phone, @barber, @date,  @color]
 			end
 
 	@db.close
@@ -78,11 +78,17 @@ post '/admin' do
 	password = params[:password]
      
     if login == 'admin' && password == '2233'
-    	@list = File.read './public/users.txt'
+    	db = SQLite3::Database.new './public/bsh.db'
+		#db.results_as_hash = true
+
+		@list = db.execute 'select * from customers order by id desc' #do |row|
+	    #@list = "#{row['ID']}  |  #{row['Name']}  |  #{row['Phone']}  |  #{row['DateStamp']}  |  #{row['Barber']}  |  #{row['Color']}"
+		#end
     	
+    	erb :list
     else
     	@error_1 = "Не вошедше"
     	erb :admin
     end
-	erb :list
+	
 end
