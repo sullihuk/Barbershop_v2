@@ -1,13 +1,24 @@
 require 'rubygems'
 require 'sinatra'
-require 'sinatra/contrib'
+require 'sinatra/contrib/all'
 require 'sqlite3'
 
+
+def is_barber_exists? db, name
+	db.execute('select * from BARBERS where name = ?', [name]),length > 0
+end
+
+
+def get_db
+	db = SQLite3::Database.new './public/bsh.db'
+	db.results_as_hash = true
+	db
+end
 
 
 def check 
 
-	@db = SQLite3::Database.new './public/bsh.db'
+	get_db
 
 			hh = {:username => "Введите имя",
 				:phone => 'Введите телефон',
@@ -22,12 +33,23 @@ def check
 				return erb :visit
 			else
 				@notice = "Dear #{@username} we will pend you at #{@date}, #{@phone}, #{@barber} #{@color}"
-				@db.execute "INSERT INTO CUSTOMERS (NAME, PHONE, BARBER, DATESTAMP, COLOR) VALUES (?,?,?,?,?)", [@username, @phone, @barber, @date,  @color]
+				get_db.execute "INSERT INTO CUSTOMERS (NAME, PHONE, BARBER, DATESTAMP, COLOR) VALUES (?,?,?,?,?)", [@username, @phone, @barber, @date,  @color]
 			end
 
-	@db.close
+	get_db.close
 
 end
+
+configure do
+		get_db.execute 'CREATE TABLE IF NOT EXISTS
+		'BARBERS'
+		(
+			'ID' INTEGER PRIMARY KEY AUTOINCREMENT,
+			'NAME' TEXT
+			)'
+
+end
+
 
 get '/' do
 	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href =\"http://rubyschool.us/\">Ruby school</a>"
@@ -76,15 +98,16 @@ get '/list' do
 post '/admin' do
 	login = params[:login]
 	password = params[:password]
+	
      
     if login == 'admin' && password == '2233'
-    	db = SQLite3::Database.new './public/bsh.db'
+    	get_db
+    	#db = SQLite3::Database.new './public/bsh.db'
 		#db.results_as_hash = true
 
-		@list = db.execute 'select * from customers order by id desc' #do |row|
-	    #@list = "#{row['ID']}  |  #{row['Name']}  |  #{row['Phone']}  |  #{row['DateStamp']}  |  #{row['Barber']}  |  #{row['Color']}"
-		#end
-    	
+		@list = get_db.execute 'select * from customers order by id desc;' 
+			
+		   	
     	erb :list
     else
     	@error_1 = "Не вошедше"
