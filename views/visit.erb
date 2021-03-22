@@ -2,7 +2,6 @@
 
 <%= @notice%>
 
-
 <form action="/visit" method="POST">
 
   <div class="mb-3">
@@ -17,11 +16,19 @@
     <label for="exampleInputEmail1" class="form-label" >Когда Вас ждать</label>
     <input id="aaa" name ='date' type="text" class="form-control"  >
     </div>
+
     <select class="form-select ccc" name="barber" aria-label="Default select example" value = "<%=@barber%>" >
-  <option selected>Выберите парикмахера</option>
-  <option <%= @barber == "Walter White" ? 'selected' : "Выберите парикмахера"%>>Walter White</option>
+  <!-- <option >Выберите парикмахера</option>
+  <option >  </option>
+   <option <%= @barber == "Walter White" ? 'selected' : "Выберите парикмахера"%>>Walter White</option>
   <option <%= @barber == "Gustavo Fring" ? 'selected' : "Выберите парикмахера"%>>Gustavo Fring</option>
-  <option <%= @barber == "Michael Ehrmantrauth" ? 'selected' : "Выберите парикмахера"%>>Michael Ehrmantrauth</option>
+  <option <%= @barber == "Michael Ehrmantrauth" ? 'selected' : "Выберите парикмахера"%>>Michael Ehrmantrauth</option>   -->
+
+  <% @barbers.each do |item| %>
+  <option <%= @barber == item['NAME'] ? 'selected' : "Выберите парикмахера"%>> <%= item['NAME'] %></option>
+    <% end%>
+      
+    
 </select> 
 <div class="mb-3">
     <label  class="form-label">Выберите цвет краски</label>
