@@ -44,11 +44,11 @@
 					
 
 			<div>
-				<%if @error then %>
+				<%if @error  then %>
 						<div class="alert alert-danger"><%=@error%>
 							<% end %>
 						</div>
-					<%if @error3 then %>
+					<%if @error3 && @error3.size > 0 then %>
 						<div class="alert alert-danger"><%=@error3%></div>
 				<% end %>
 				<%= yield %>

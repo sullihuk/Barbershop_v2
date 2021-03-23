@@ -41,7 +41,7 @@ def check
 				return erb :visit
 			else
 				@notice = "Dear #{@username} we will pend you at #{@date}, #{@phone}, #{@barber} #{@color}"
-				get_db.execute "INSERT INTO CUSTOMERS (NAME, PHONE, BARBER, DATESTAMP, COLOR) VALUES (?,?,?,?,?)", [@username, @phone, @barber, @date,  @color]
+				get_db.execute "INSERT INTO CUSTOMERS (NAME, PHONE, DATESTAMP, BARBER, COLOR) VALUES (?,?,?,?,?)", [@username, @phone, @date, @barber,  @color]
 			end
 
 	get_db.close
